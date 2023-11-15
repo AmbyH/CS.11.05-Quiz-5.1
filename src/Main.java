@@ -8,8 +8,16 @@ public class Main {
      * zip(myArray1, myArray2) → {1,3,5,7,9,2,4,6,8,10,12,14,16}
      */
     public static int[] combine(int[] array1, int[] array2) {
+        int al = array1.length;
+        int[] result = new int[al+array2.length];
+        for (int i = 0; i<al;i++) {
+            result[i] = array1[i];
+        }
+        for (int i = al;i<al+array2.length;i++) {
+            result[i] = array2[i-al];
+        }
 
-        return null;
+        return result;
 
     }
 
@@ -21,9 +29,20 @@ public class Main {
      * zip(myArray1, myArray2) → {1,2,3,4,5,6,7,8,9,10}
      */
     public static int[] zip(int[] array1, int[] array2) {
-
-        return null;
-
+        int[] out = new int[array1.length+array2.length];
+        int first = 0;
+        int second = 0;
+        for (int i = 0; i<array1.length+array2.length; i++) {
+            if (i%2 == 0) {
+                out[i] = array1[first];
+                first = first+1;
+            }
+            else {
+                out[i] = array2[second];
+                second = second+1;
+            }
+        }
+        return out;
     }
 
     /**
@@ -34,8 +53,11 @@ public class Main {
      * product(myArray1, myArray2) → {2,12,30,56,90}
      */
     public static int[] product(int[] array1, int[] array2) {
-
-        return null;
+        int[] out = new int[array1.length];
+        for (int i = 0; i<array1.length;i++) {
+            out[i] = array1[i]*array2[i];
+        }
+        return out;
 
     }
 
@@ -56,14 +78,26 @@ public class Main {
      * capitalCount(words) → {1, 2, 2, 0}
      */
     public static int[] capitalCount(String[] words) {
+        int[] count = new int[words.length];
+        for (int i = 0; i< words.length; i++) {
+            count[i] = countCapitalLetters(words[i]);
+        }
 
-        return null;
+        return count;
 
     }
 
     public static int countCapitalLetters(String word) {
+        int count = 0;
+        for (int i = 0; i<word.length();i++) {
+            char c = word.charAt(i);
+            int a = (char) c;
+            if (a<91 && a>64) {
+                count = count + 1;
+            }
+        }
 
-        return 0;
+        return count;
 
     }
 
